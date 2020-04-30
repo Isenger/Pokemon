@@ -2,54 +2,52 @@ import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Novice
-{   
-    Scanner select = new Scanner(System.in);
-    Inventory bag = new Inventory();
-    Monster mon = new Monster();
-    protected int hpMax = 100;
-    protected int mpMax = 30;
-    protected int expMax = 100;
-    protected int hp ;
-    protected int mp ;
-    protected int exp = 0;
-    protected int level = 1;
-    protected int beginDamage = 20;
-    protected int damage = 0;
-    //protected int monDamage = 0;
-    protected int fireball = 15;
-    
+public abstract class Pokemon{   
     //Scanner select = new Scanner(System.in);
+    //Inventory bag = new Inventory();
+    //Monster mon = new Monster();
+    protected int hpMax;
+    protected int mpMax;
+    //protected int expMax = 100;
+    protected int hp;
+    protected int mp;
+    //protected int exp = 0;
+    protected int level;
+    protected int levelMax = 100;
+    //protected int beginDamage = 20;
+    //protected int damage = 0;
+    //protected int monDamage = 0;
+    protected String name;
     
-    public void getDamage(int monDamage){
-        //int i = 0;
+    public Pokemon(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    public String toString(){
+        return name;
+    }
+    public boolean getDamage(int value){
         hp = hpMax;
-        while(hp <= hpMax){
-            hp = hp - monDamage;
-            //System.out.println("You Hp : " + hp);
+        if(hpMax == 0){
+            return false;
         }
-        if(hp == 0){
-            System.out.println("You Died");
-            exp = (exp / 2) - (10 * level);
-            if(exp < 0){
-                exp = 0;
-            }
+        int currentHp = hp - value; 
+        if(currentHp >= 0){ 
+            this.hp = currentHp;
+            return true;
         }
-    }
-    public void minusZero(){//Use in second time
-        mp = mpMax;
-        if(mp == 0){
-            System.out.println("Mana Empty");
-            System.out.println("if use you get damage");
-        }
-        //if(mp > 0){
-          //  mp = mp - fireball;
-        //}
-        if(mp < 0){
-            hp = hp + mp - fireball;
+        else { 
+            this.hp = 0;
+            return true;
         }
     }
-    public void expUp(int hpMon){   
+    public abstract void getDamage(Pokemon enemy);
+
+    
+    
+    /*public void expUp(int hpMon){   
         while(exp <= expMax){
             damage += beginDamage;
             if(damage == hpMon){
@@ -104,5 +102,5 @@ public class Novice
     }
     public void checkItem(){
         bag.item();
-    } 
+    } */
 }
