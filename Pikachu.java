@@ -1,16 +1,14 @@
-import java.io.*;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.lang.Math;
+public class Pikachu extends PokeStatus{
 
-public class Pikachu extends Pokemon
-{
-    public Pikachu(String name){
-        super(name);
-        level = (int)(Math.random()*10)+1;
-        hpMax = 50 + (level*5);
+    public Pikachu(String PokeName){
+        super(PokeName, "Pikachu");
+        maxHp = 100;
+        maxMp = 30;
+        hp = maxHp;
+        mp = maxMp;
+        exp = 0;
+        pokeDmg = 15;
+        pokePic = "Pikachu.png";
     }
-    public void getDamage(Pokemon enemy){
-        System.out.println("Pokemon" + getName() + "attack" +  enemy.getName());
-    }
+    
 }
