@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /**
  * Bag
  */
-public abstract class Bag {
+public class Bag {
 
     private ArrayList<Item> items;
     private int bagsize;
